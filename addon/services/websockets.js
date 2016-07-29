@@ -42,9 +42,9 @@ export default Service.extend({
     */
     const existingProxy = get(this, `sockets.${cleanedUrl}`);
 
-    if (existingProxy && this.isWebSocketOpen(existingProxy.socket)) {
-      return existingProxy;
-    }
+    // if (existingProxy && this.isWebSocketOpen(existingProxy.socket)) {
+    //   return existingProxy;
+    // }
 
     /*
       we can get to this place if the websocket has been closed and we are trying to reopen
@@ -52,14 +52,14 @@ export default Service.extend({
     */
     const newWebSocket = this.createSocket(normalizedUrl, protocols);
 
-    if (existingProxy) {
-      /*
-        If there is an existing socket in place we simply update the websocket object and not
-        the whole proxy as we dont want to destroy the previous listeners.
-      */
-      existingProxy.socket = newWebSocket;
-      return existingProxy;
-    }
+    // if (existingProxy) {
+      
+    //     If there is an existing socket in place we simply update the websocket object and not
+    //     the whole proxy as we dont want to destroy the previous listeners.
+      
+    //   existingProxy.socket = newWebSocket;
+    //   return existingProxy;
+    // }
 
     const newProxy = this.createProxy(newWebSocket, protocols);
 
